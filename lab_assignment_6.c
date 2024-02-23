@@ -4,16 +4,18 @@
 
 int search(int numbers[], int low, int high, int value) 
 {
-	int mid=(low+high)/2;
+	if(low<=high)
+	{
+		int mid=(low+high)/2;
 
-	if(numbers[mid]==value)
-	{
-		return mid;
+		if(value==numbers[mid])
+			return mid;
+		else if(value<numbers[mid])
+			return search(numbers, mid-1, high, value);
+		else
+			return search(numbers, mid+1, high, value);
 	}
-	else
-	{
-		search(numbers, mid, high, value);
-	}
+	
 	return -1;
 }
 
